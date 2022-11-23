@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\OrganisationController;
+use App\Http\Controllers\TeachingController;
+use App\Models\Organisation;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,13 +17,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get(
+    '/organisation', 
+    [OrganisationController::class, 'index']
+)->name('organisation');
+Route::get(
+    '/teaching', 
+    [TeachingController::class, 'open_teaching']
+)->name('teaching');
+Route::get(
+    '/we-practice', 
+    [TeachingController::class, 'do_some_practice']
+)->name('practice');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $org = Organisation::all();
+    return view('dashboard',[
+        'organisation' => $org
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::patch(
+        'organisation/edit/{id}', 
+        [OrganisationController::class, 'edit']
+    )->name('organisation.edit');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
