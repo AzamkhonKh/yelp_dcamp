@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class OrganisationController extends Controller
 {
+    public function store(Request $request)
+    {
+        Organisation::create($request->all());
+        return redirect()->back()->with('message', 'created');
+    }
     public function edit(Request $request, $id)
     {
         $organisation = Organisation::find($id);
@@ -21,6 +26,16 @@ class OrganisationController extends Controller
 
     public function index()
     {
-        return view('organisation');
+        $organisation = Organisation::all();
+        return view('organisations.index')->with('organisation', $organisation);
+    }
+
+    public function destroy($id)
+    {
+        if(Organisation::find($id)->delete())
+        {
+            return redirect()->back()->with('message', 'succes');
+        }
+        return redirect()->back()->with('message', 'can\'t delete');
     }
 }

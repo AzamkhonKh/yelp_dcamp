@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OrganisationController;
 use App\Http\Controllers\TeachingController;
@@ -21,25 +22,24 @@ Route::get(
     '/organisation', 
     [OrganisationController::class, 'index']
 )->name('organisation');
-Route::get(
-    '/teaching', 
-    [TeachingController::class, 'open_teaching']
-)->name('teaching');
-Route::get(
-    '/we-practice', 
-    [TeachingController::class, 'do_some_practice']
-)->name('practice');
 
-Route::get('/dashboard', function () {
-    $org = Organisation::all();
-    return view('dashboard',[
-        'organisation' => $org
-    ]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::post(
+    'organisation', 
+    [OrganisationController::class, 'store']
+)->name('organisation.store');
+Route::delete(
+    'organisation/{id}', 
+    [OrganisationController::class, 'destroy']
+)->name('organisation.delete');
 Route::patch(
-        'organisation/edit/{id}', 
-        [OrganisationController::class, 'edit']
-    )->name('organisation.edit');
+    'organisation/edit/{id}', 
+    [OrganisationController::class, 'edit']
+)->name('organisation.edit');
+Route::put(
+    'organisation/edit/{id}', 
+    [OrganisationController::class, 'edit']
+)->name('organisation.edit');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
