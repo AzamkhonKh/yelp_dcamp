@@ -1,14 +1,13 @@
 <!-- Pop In Modal -->
-<div class="modal fade" id="modal-popin{{ $org->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-popin" aria-hidden="true">
+<div class="modal fade" id="modal-popin-create" tabindex="-1" role="dialog" aria-labelledby="modal-popin" aria-hidden="true">
 
-<form action="{{ route('organisation.edit', $org->id) }}" method="POST">
+<form action="{{ route('categories.store') }}" method="POST">
 @csrf
-@method('PUT')
     <div class="modal-dialog modal-dialog-popin" role="document">
     <div class="modal-content">
         <div class="block block-rounded shadow-none mb-0">
         <div class="block-header block-header-default">
-            <h3 class="block-title">Edit organisation</h3>
+            <h3 class="block-title">Store category</h3>
             <div class="block-options">
             <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
                 <i class="fa fa-times"></i>
@@ -16,38 +15,22 @@
             </div>
         </div>
         <div class="block-content fs-sm">
-        <div class="block-content">
+<div class="block-content">
               <div class="row">
                 <div class="col-lg-8 col-xl-12">
                     <div class="mb-4">
                       <div class="input-group">
                         <span class="input-group-text">
-                          Legal name
+                          name
                         </span>
                         <input 
                             type="text" 
                             class="form-control" 
-                            name="legal_name"
-                            value="{{$org->legal_name}}"
+                            id="example-group1-input1" 
+                            name="name"
                         >
                       </div>
                     </div>
-                    <div class="mb-4">
-                      <div class="input-group">
-                        <span class="input-group-text">
-                          description
-                        </span>
-                        <input 
-                            type="text" 
-                            class="form-control" 
-                            id="example-group1-input2" 
-                            name="description"
-                            value="{{$org->description}}"
-                        >
-                        
-                      </div>
-                    </div>
-                    
                 </div>
               </div>
             </div>

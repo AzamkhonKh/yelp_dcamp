@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OrganisationController;
 use App\Http\Controllers\TeachingController;
@@ -40,6 +41,7 @@ Route::put(
     [OrganisationController::class, 'edit']
 )->name('organisation.edit');
 
+Route::apiResource('categories', CategoriesController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
