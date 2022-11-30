@@ -39,6 +39,11 @@
                         class="btn btn-alt-primary" 
                         data-bs-toggle="modal" 
                         data-bs-target="#modal-popin-delete{{$org->id}}">Delete Organisation</button>
+                    <button type="button" 
+                        class="btn btn-alt-primary" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#modal-popin-attach_category{{$org->id}}">Add category</button>
+                        
                 </td>
                 <td class="text-center">
                 <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" title="View Customer">
@@ -55,8 +60,10 @@
 @endsection
 
 @section('modals')
+
     @include('organisations.modals.store')
     @foreach($organisation as $org)
+        @include('organisations.modals.attach_category',['id' => $org->id, 'categories' => $categories])
         @include('organisations.modals.edit',['org' => $org])
         @include('organisations.modals.delete',['id' => $org->id])
     @endforeach

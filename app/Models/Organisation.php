@@ -20,7 +20,7 @@ class Organisation extends Model
         'head_person_name',
     ];
 
-    public function category()
+    public function categories()
     {
         return $this->belongstoMany(Category::class)->using(CategoryOrganisation::class);
     }

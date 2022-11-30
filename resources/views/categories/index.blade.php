@@ -48,8 +48,8 @@
 
 @section('modals')
     @include('categories.modals.store')
+    @each('categories.modals.edit', $categories, 'org')
     @foreach($categories as $org)
-        @include('categories.modals.edit',['org' => $org])
         @include('categories.modals.delete',['id' => $org->id])
     @endforeach
 @endsection

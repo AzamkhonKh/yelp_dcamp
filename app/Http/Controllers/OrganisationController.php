@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Organisation;
 use Illuminate\Http\Request;
 
@@ -26,13 +27,26 @@ class OrganisationController extends Controller
 
     public function index()
     {
-        $organisation = Organisation::all();
-        return view('organisations.index')->with('organisation', $organisation);
+        $categories = Category::all();
+        $organisation = Organisation::with('categories')->get();
+        return view('organisations.index')
+            ->with('categories', $categories)
+            ->with('organisation', $organisation);
     }
 
     public function destroy($id)
     {
         if(Organisation::find($id)->delete())
+        {
+            return redirect()->back()->with('message', 'succes');
+        }
+        return redirect()->back()->with('message', 'can\'t delete');
+    }
+
+    public function attach_category(Request $request, $id)
+    {
+        $organisation = Organisation::find($id);
+        if($organisation->categories()->attach(request('category_id')))
         {
             return redirect()->back()->with('message', 'succes');
         }

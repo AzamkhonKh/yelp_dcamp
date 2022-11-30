@@ -23,7 +23,6 @@ Route::get(
     '/organisation', 
     [OrganisationController::class, 'index']
 )->name('organisation');
-
 Route::post(
     'organisation', 
     [OrganisationController::class, 'store']
@@ -36,6 +35,11 @@ Route::patch(
     'organisation/edit/{id}', 
     [OrganisationController::class, 'edit']
 )->name('organisation.edit');
+Route::patch(
+    'organisation/attach_category/{id}', 
+    [OrganisationController::class, 'attach_category']
+)->name('organisation.attach_category');
+
 Route::put(
     'organisation/edit/{id}', 
     [OrganisationController::class, 'edit']
