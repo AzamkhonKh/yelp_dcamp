@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Organisation;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
@@ -76,6 +77,23 @@ class OrganisationController extends Controller
         if($organisation->categories()->sync($cat_ids))
         {
             return ['message'=> 'success'];
+        }
+        return ['message'=> 'failed'];
+    }
+
+    public function add_comment(Request $request)
+    {
+        $comment = Comment::create([
+            'text' => request('text'),
+            'username' => request('username'),
+            'user_id' => request('user_id'),
+            'organisation_id' => request('organisation_id'),
+            'parent_comment_id' => request('parent_comment_id')
+        ]);
+        if(!empty($comment))
+        {
+            $rendered = view('organisations.comment', ['comment'=> $comment])->render();
+            return ['message'=> 'success', 'html' => $rendered];
         }
         return ['message'=> 'failed'];
     }

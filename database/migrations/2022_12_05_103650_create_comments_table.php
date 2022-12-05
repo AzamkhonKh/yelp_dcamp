@@ -13,17 +13,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->timestamps();
-        });
+            $table->float('rate')->default(0);
+            $table->string('username');
+            $table->string('text');
 
-        Schema::create('category_organisation', function (Blueprint $table) {
-            $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('organisation_id');
-            $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('organisation_id')->references('id')->on('organisations');
+
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->unsignedBigInteger('parent_comment_id')->nullable();
+            $table->foreign('parent_comment_id')->references('id')->on('comments');
+
+            $table->timestamps();
         });
     }
 
@@ -34,7 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_organisation');
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('comments');
     }
 };

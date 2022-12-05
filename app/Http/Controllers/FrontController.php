@@ -25,7 +25,7 @@ class FrontController extends Controller
 
     public function page_organisation($id)
     {
-        $organisation = Organisation::with('categories')->find($id);
+        $organisation = Organisation::with(['categories', 'comments'])->find($id);
         return view('organisations.app_page', [
             'organisation' => $organisation,
         ]);

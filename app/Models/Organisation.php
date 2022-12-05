@@ -9,7 +9,7 @@ class Organisation extends Model
 {
     use HasFactory;
 
-    protected $table = 'organisation';
+    protected $table = 'organisations';
 
     protected $fillable = [
         'legal_name',
@@ -23,6 +23,11 @@ class Organisation extends Model
     public function categories()
     {
         return $this->belongstoMany(Category::class)->using(CategoryOrganisation::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
 }

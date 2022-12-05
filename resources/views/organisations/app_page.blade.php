@@ -1,5 +1,37 @@
 @extends('layouts.app')
 
+@section('js')
+
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+        });
+        $('#comment_organisation').click(function(){
+            let url = '{{ route('app.organisations.comment', ['id' => $organisation->id]) }}';
+            let organisation_id = '{{ $organisation->id }}';
+            let username = $('#comment_username').val();
+            let text = $('#comment_text').val();
+            let parent_comment_id = $('#comment_reply_id').val();
+            $.post(url, 
+                { 
+                    organisation_id: organisation_id,
+                    username: username,
+                    text: text,
+                    parent_comment_id: parent_comment_id,
+                },
+                function(data, status) {
+                    if(data.message === "success")
+                        $('#comments').append(data.html);
+                    $('#comment_username').val('');
+                    $('#comment_text').val('');
+                    $('#comment_reply_id').val('')
+                })
+        });
+    </script>
+@endsection
+
 @section('content')
 <!-- SINGLE PRODUCT PAGE -->
 <div class="single-pdt-page  py-5">
@@ -47,7 +79,7 @@
                         </div>
                     </div>
                 </div>
-
+                @if($organisation->categories->count() > 0)
                 <div class="sidebar-pdt-desc mt-4">
                     <div class="shadow border p-4 text-center">
                         @foreach($organisation->categories as $category)
@@ -57,6 +89,7 @@
                         @endforeach
                     </div>
                 </div>
+                @endif
                 <div class="quicklink-sidebar-menu shadow border mt-4 p-4">
                     <div class="user-title-info">
                         <h4>Connect with me</h4>
@@ -158,48 +191,22 @@
                     <div class="fade show tab-pane reviews-tab" id="product-comments">
                         <div class="tab-content-wrapper p-4">
                             <div class="card-body p-0">
-                            <div class="media align-items-top mb-4 pl-2">
-                                <div class="media-body">
-                                    <h6 class="mb-1">Miller 
-                                        <div class="insight-posted-date mb-2">
-                                            <span class="text-grey ml-0 ml-md-0">2 hours ago</span>
-                                        </div>
-                                    </h6>
-                                    <div class="rating-blk d-inline-block">
-                                        <ul class="list-group list-group-horizontal float-left">
-                                        <li class="pr-1">
-                                            <span class="fa fa-star"></span>
-                                        </li>
-                                        <li class="pr-1">
-                                            <span class="fa fa-star"></span>
-                                        </li>
-                                        <li class="pr-1">
-                                            <span class="fa fa-star"></span>
-                                        </li>
-                                        <li class="pr-1">
-                                            <span class="fa fa-star"></span>
-                                        </li>
-                                        <li class="pr-1">
-                                            <span class="fa fa-star"></span>
-                                        </li>
-                                        </ul>
-                                        <span class="rating__count">( 5 Rating )</span>
-                                    </div>
-                                    <div class="cmt-text d-block text-grey">Nunc placerat mi id nisi interdum mollis. Praesent there pharetra, justo ut sceleris que the mattis.</div>
-                                </div>
-                                <div class="amt-rect-sale d-inline-block float-right">
-                                    <a href="javascript:;"><span class="text-theme">Reply</span></a>
-                                </div>
+                            <div id="comments">
+                                @foreach($organisation->comments as $comment)
+                                    @include('organisations.comment', ['comment' => $comment])
+                                @endforeach
                             </div>
                             <div class="media align-items-top mb-0 pl-2">
                                 <div class="media-body">
-                                    <form>
+                                        <input type="hidden" id="comment_reply_id" value="">
                                         <div class="form-group mb-3">
-                                            <input class="form-control bg-input p-3" placeholder="Give your name">
+                                            <input id="comment_username"  class="form-control bg-input p-3" placeholder="Give your name">
                                         </div>
-                                        <div class="form-group mb-3"><textarea class="form-control bg-input p-3" rows="5" placeholder="Leave a comment..."></textarea></div>
-                                    </form>
-                                    <a href="javascript:;" class="btn btn-style px-4 py-2 text-white radius-5 text-capitalize">Submit Now</a>
+                                        <div class="form-group mb-3">
+                                            <textarea id="comment_text" class="form-control bg-input p-3" rows="5" placeholder="Leave a comment...">
+                                            </textarea>
+                                        </div>
+                                        <button id="comment_organisation" class="btn btn-style px-4 py-2 text-white radius-5 text-capitalize">Comment</button>
                                 </div>
                             </div>
                             </div>

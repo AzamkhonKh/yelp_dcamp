@@ -47,6 +47,7 @@ Route::apiResource('categories', CategoriesController::class);
 Route::get('/',[FrontController::class, 'landing'])->name('landing');
 Route::get('/app/organisations',[FrontController::class, 'index_organisation'])->name('app.organisations');
 Route::get('/app/organisations/{id}',[FrontController::class, 'page_organisation'])->name('app.organisations.page');
+Route::post('/app/organisations/{id}/comment',[OrganisationController::class, 'add_comment'])->name('app.organisations.comment');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
