@@ -1,49 +1,83 @@
 @extends('layouts.app')
 
 @section('content')
-@section('content')
-
          <!-- Slider-wrapper -->
-         <section class="video-wrapper pt-10 pb-4 pb-md-4 pb-lg-5">
-            <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-               <source src="{{ asset('assets/videos/video-background.mp4') }}" type="video/mp4">
-            </video>
-            <div class="container-fluid">
-               <div class="row">
-                  <div class="col-12">
-                     <div class="video-caption-blk position-relative py-10">
-                        <div class="video-caption valign text-white text-center w-100 z-index2">
-                            <h1 class="px-2 px-sm-0 d-inline-block">Joy Bor<span class="d-block text-white bg-theme px-2 px-sm-4 mt-2">Уникальная сиситема заказов</span></h1>
-                            <h4 class="my-4 my-xl-5 px-0">В Узбекистане с любовью</h4>
+         <section class="slider-wrapper">
+            <div id="carouselExampleIndicators" class="home-carousel carousel slide py-8" data-ride="carousel" data-interval="false">
+               <div class="carousel-inner">
+                  <div class="carousel-item active py-10">
+                     <div class="carousel-caption custom-caption positiony-0">
+                        <h1 class="px-2 px-sm-0 d-inline-block">Nookx<span class="d-block text-white bg-theme px-4 mt-2">Multi Vendor HTML Template</span></h1>
+                        <h4 class="my-4 my-md-5 px-4 px-md-5 px-sm-0">Marketplace template for buyers & sellers</h4>
+                        <div class="row">
+                           <div class="col-12">
+                              <div class="btn-blk">
+                                 <a class="d-inline-block btn btn-outline-theme radius-5 px-4 py-3" href="product-grid-view.html">Register Now</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="carousel-item py-10">
+                     <div class="carousel-caption custom-caption positiony-0">
+                        <h1 class="px-2 px-sm-0 d-inline-block">Nookx<span class="d-block text-white bg-theme px-4 mt-2">Multi Vendor HTML Template</span></h1>
+                        <h4 class="my-4 my-md-5 px-4 px-md-5 px-sm-0">Marketplace template for buyers & sellers</h4>
+                        <div class="row">
+                           <div class="col-12">
+                              <div class="btn-blk">
+                                 <a class="d-inline-block btn btn-outline-theme radius-5 px-4 py-3" href="product-grid-view.html">Register Now</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+  <!-- Left and right controls -->
+   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="no-bg carousel-control-prev-icon lnr lnr-chevron-left before-valign l-0" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+   </a>
+   <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="no-bg carousel-control-next-icon lnr lnr-chevron-right before-valign r-0" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+   </a>
+
+            </div>
+            <div class="section-bottom-wrapper pb-5 text-center d-none d-md-block">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-3">
+                        <div class="box-blk text-white">
+                           <span class="lnr lnr-users font-lg d-inline-block mb-3"></span>                 
+                           <h5 class="font-bold">250+ Seller</h5>
+                           <p>Lorem ipsum dolor sit.</p>
+                        </div>
+                     </div>
+                     <div class="col-md-3">
+                        <div class="box-blk text-white">
+                           <span class="lnr lnr-star font-lg d-inline-block mb-3"></span>                 
+                           <h5 class="font-bold">10+ Awards</h5>
+                           <p>Lorem ipsum dolor sit.</p>
+                        </div>
+                     </div>
+                     <div class="col-md-3">
+                        <div class="box-blk text-white">
+                           <span class="lnr lnr-briefcase font-lg d-inline-block mb-3"></span>
+                           <h5 class="font-bold">500+ Services</h5>
+                           <p>Lorem ipsum dolor sit.</p>
+                        </div>
+                     </div>
+                     <div class="col-md-3">
+                        <div class="box-blk text-white">
+                           <span class="lnr lnr-smile font-lg d-inline-block mb-3"></span>
+                           <h5 class="font-bold">230+ Customers</h5>
+                           <p>Lorem ipsum dolor sit.</p>
                         </div>
                      </div>
                   </div>
                </div>
             </div>
-
-            <div class="section-bottom-wrapper pt-8 position-relative b-0 w-100 pb-0 text-center d-none d-md-block z-index2">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-3">
-                     </div>
-                     <div class="col-md-3">
-                        <div class="box-blk text-white">
-                           <span class="lnr lnr-users font-lg d-inline-block mb-3"></span>                 
-                           <h5 class="font-bold">250+ </h5>
-                           <p>Активных пользователей.</p>
-                        </div>
-                     </div>
-                     <div class="col-md-3">
-                        <div class="box-blk text-white">
-                           <span class="lnr lnr-briefcase font-lg d-inline-block mb-3"></span>                           
-                           <h5 class="font-bold">500+ Организаций</h5>
-                        </div>
-                     </div>
-                     <div class="col-md-3">
-                     </div>
-                  </div>
-               </div>
-            </div>            
          </section>
          <!-- Slider-wrapper -->
          <section class="pdt-cat-wrapper py-6">
@@ -54,7 +88,8 @@
                         <div class="row">
                            <div class="col-lg-8 col-md-10 m-auto">
                               <div class="mb-6">
-                                 <h2 class="text-capitalize">Наиболее интересующие категории</h2>
+                                 <h2 class="text-capitalize">explore from categories</h2>
+                                 <h5 class="mt-4">Laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats. Lid est laborum dolo rumes fugats untras.</h5>
                               </div>
                            </div>
                         </div>
@@ -68,8 +103,8 @@
                                              <span class="lnr lnr-gift text-theme m-auto display-4"></span>
                                           </div>
                                           <div class="content-blk">
-                                             <h3 class="pt-4 pb-2">Красота</h3>
-                                             <h5>362 Организаций</h5>
+                                             <h3 class="pt-4 pb-2">Fashion</h3>
+                                             <h5>10 Ads Posted</h5>
                                           </div>
                                        </div>
                                     </div>
@@ -79,8 +114,8 @@
                                              <span class="lnr lnr-printer text-theme m-auto display-4"></span>
                                           </div>
                                           <div class="content-blk">
-                                             <h3 class="pt-4 pb-2">Электричество</h3>
-                                             <h5>607 Организаций</h5>
+                                             <h3 class="pt-4 pb-2">Electrical</h3>
+                                             <h5>5 Ads Posted</h5>
                                           </div>
                                        </div>
                                     </div>
@@ -90,8 +125,8 @@
                                              <span class="lnr lnr-construction text-theme m-auto display-4"></span>
                                           </div>
                                           <div class="content-blk">
-                                             <h3 class="pt-4 pb-2">Строительство</h3>
-                                             <h5>805 Организаций</h5>
+                                             <h3 class="pt-4 pb-2">Construction</h3>
+                                             <h5>14 Ads Posted</h5>
                                           </div>
                                        </div>
                                     </div>
@@ -101,8 +136,8 @@
                                              <span class="lnr lnr-paw text-theme m-auto display-4"></span>
                                           </div>
                                           <div class="content-blk">
-                                             <h3 class="pt-4 pb-2">Домашние Питомцы</h3>
-                                             <h5>203 Организаций</h5>
+                                             <h3 class="pt-4 pb-2">Pet Care</h3>
+                                             <h5>23 Ads Posted</h5>
                                           </div>
                                        </div>
                                     </div>
@@ -112,8 +147,8 @@
                                              <span class="lnr lnr-leaf text-theme m-auto display-4"></span>
                                           </div>
                                           <div class="content-blk">
-                                             <h3 class="pt-4 pb-2">Земледелие</h3>
-                                             <h5>704 Организаций</h5>
+                                             <h3 class="pt-4 pb-2">Ayurvedic</h3>
+                                             <h5>67 Ads Posted</h5>
                                           </div>
                                        </div>
                                     </div>
@@ -123,8 +158,8 @@
                                              <span class="lnr lnr-camera text-theme m-auto display-4"></span>
                                           </div>
                                           <div class="content-blk">
-                                             <h3 class="pt-4 pb-2">Интернет услуги</h3>
-                                             <h5>507 Организаций</h5>
+                                             <h3 class="pt-4 pb-2">Studio</h3>
+                                             <h5>10 Ads Posted</h5>
                                           </div>
                                        </div>
                                     </div>
@@ -133,7 +168,7 @@
                               <div class="row">
                                  <div class="col-12">
                                     <div class="view-pdt-btn">
-                                       <a href="{{ route('organisation') }}" class="btn btn-md btn-theme radius-5 text-white py-3 px-4  text-capitalize shadow-theme-lg">Все Организации</a>
+                                       <a href="product-grid-view.html" class="btn btn-md btn-theme radius-5 text-white py-3 px-4  text-capitalize shadow-theme-lg">view all products</a>
                                     </div>
                                  </div>
                               </div>
@@ -149,7 +184,8 @@
                <div class="row text-center">
                   <div class="col-lg-8 col-md-10 m-auto">
                      <div class="mb-6">
-                        <h2 class="text-capitalize">Популярные Организаций</h2>
+                        <h2 class="text-capitalize">explore our products</h2>
+                        <h5 class="mt-4">Laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats. Lid est laborum dolo rumes fugats untras.</h5>
                      </div>
                   </div>
                </div>
@@ -160,7 +196,7 @@
                            <a href="wishlist-grid-view.html"><i class="fa fa-heart-o text-white"></i></a>
                         </div>
                         <div class="card-image">
-                           <img class="card-img-top" src="{{ asset('assets/img/service-img-1.jpg') }}" alt="Card image">
+                           <img class="card-img-top" src="assets/img/service-img-1.jpg" alt="Card image">
                            <div class="image-overlay">
                               <a href="single-product.html" class="btn btn-outline-white radius-5 py-3 px-4  text-capitalize">More Info</a>
                            </div>
@@ -173,7 +209,7 @@
                                     <div class="col-6">
                                        <div class="media align-items-center">
                                           <a href="user-profile.html" class="text-link d-inline-block">
-                                             <img src="{{ asset('assets/img/user-avatar-1.png') }}" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
+                                             <img src="assets/img/user-avatar-1.png" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
                                              <div class="media-body d-inline-block">
                                                 <p><strong>Aana</strong></p>
                                              </div>
@@ -249,7 +285,7 @@
                            <a href="wishlist-grid-view.html"><i class="fa fa-heart"></i></a>
                         </div>
                         <div class="card-image">
-                           <img class="card-img-top" src="{{ asset('assets/img/service-img-2.jpg') }}" alt="Card image">
+                           <img class="card-img-top" src="assets/img/service-img-2.jpg" alt="Card image">
                            <div class="image-overlay">
                               <a href="single-product.html" class="btn btn-outline-white radius-5 py-3 px-4  text-capitalize">More Info</a>
                            </div>
@@ -262,7 +298,7 @@
                                     <div class="col-6">
                                        <div class="media align-items-center">
                                           <a href="user-profile.html" class="text-link d-inline-block">
-                                             <img src="{{ asset('assets/img/user-avatar-2.png') }}" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
+                                             <img src="assets/img/user-avatar-2.png" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
                                              <div class="media-body d-inline-block">
                                                 <p><strong>Shiny</strong></p>
                                              </div>
@@ -338,7 +374,7 @@
                            <a href="wishlist-grid-view.html"><i class="fa fa-heart-o text-white"></i></a>
                         </div>
                         <div class="card-image">
-                           <img class="card-img-top" src="{{ asset('assets/img/service-img-3.jpg') }}" alt="Card image">
+                           <img class="card-img-top" src="assets/img/service-img-3.jpg" alt="Card image">
                            <div class="image-overlay">
                               <a href="single-product.html" class="btn btn-outline-white radius-5 py-3 px-4  text-capitalize">More Info</a>
                            </div>
@@ -351,7 +387,7 @@
                                     <div class="col-6">
                                        <div class="media align-items-center">
                                           <a href="user-profile.html" class="text-link d-inline-block">
-                                             <img src="{{ asset('assets/img/user-avatar-3.png') }}" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
+                                             <img src="assets/img/user-avatar-3.png" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
                                              <div class="media-body d-inline-block">
                                                 <p><strong>Miller</strong></p>
                                              </div>
@@ -427,7 +463,7 @@
                            <a href="wishlist-grid-view.html"><i class="fa fa-heart-o text-white"></i></a>
                         </div>
                         <div class="card-image">
-                           <img class="card-img-top" src="{{ asset('assets/img/service-img-4.jpg') }}" alt="Card image">
+                           <img class="card-img-top" src="assets/img/service-img-4.jpg" alt="Card image">
                            <div class="image-overlay">
                               <a href="single-product.html" class="btn btn-outline-white radius-5 py-3 px-4  text-capitalize">More Info</a>
                            </div>
@@ -440,7 +476,7 @@
                                     <div class="col-6">
                                        <div class="media align-items-center">
                                           <a href="user-profile.html" class="text-link d-inline-block">
-                                             <img src="{{ asset('assets/img/user-avatar-4.png') }}" alt="John Doe" class="mr-3 rounded-circle xd-inline-block">
+                                             <img src="assets/img/user-avatar-4.png" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
                                              <div class="media-body d-inline-block">
                                                 <p><strong>Smily</strong></p>
                                              </div>
@@ -516,7 +552,7 @@
                            <a href="wishlist-grid-view.html"><i class="fa fa-heart-o text-white"></i></a>
                         </div>
                         <div class="card-image">
-                           <img class="card-img-top" src="{{ asset('assets/img/service-img-5.jpg') }}" alt="Card image">
+                           <img class="card-img-top" src="assets/img/service-img-5.jpg" alt="Card image">
                            <div class="image-overlay">
                               <a href="single-product.html" class="btn btn-outline-white radius-5 py-3 px-4  text-capitalize">More Info</a>
                            </div>
@@ -529,7 +565,7 @@
                                     <div class="col-6">
                                        <div class="media align-items-center">
                                           <a href="user-profile.html" class="text-link d-inline-block">
-                                             <img src="{{ asset('assets/img/user-avatar-5.png') }}" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
+                                             <img src="assets/img/user-avatar-5.png" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
                                              <div class="media-body d-inline-block">
                                                 <p><strong>Linda</strong></p>
                                              </div>
@@ -605,7 +641,7 @@
                            <a href="wishlist-grid-view.html"><i class="fa fa-heart-o text-white"></i></a>
                         </div>
                         <div class="card-image">
-                           <img class="card-img-top" src="{{ asset('assets/img/service-img-6.jpg') }}" alt="Card image">
+                           <img class="card-img-top" src="assets/img/service-img-6.jpg" alt="Card image">
                            <div class="image-overlay">
                               <a href="single-product.html" class="btn btn-outline-white radius-5 py-3 px-4  text-capitalize">More Info</a>
                            </div>
@@ -618,7 +654,7 @@
                                     <div class="col-6">
                                        <div class="media align-items-center">
                                           <a href="user-profile.html" class="text-link d-inline-block">
-                                             <img src="{{ asset('assets/img/user-avatar-6.png') }}" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
+                                             <img src="assets/img/user-avatar-6.png" alt="John Doe" class="mr-3 rounded-circle d-inline-block">
                                              <div class="media-body d-inline-block">
                                                 <p><strong>David</strong></p>
                                              </div>
@@ -698,92 +734,174 @@
                </div>
             </div>
          </section>
-         <section class="bg-theme-secondary py-6">
-            <div class="container-fluid">
+         <section class="insights-wrapper py-6">
+            <div class="container">
                <div class="row">
-                  <div class="col-lg-6 col-md-10 text-center mx-auto">
-                     <div class="mb-6 text-white text-center">
-                        <h2>Our Clients Feedback</h2>
+                  <div class="col-lg-8 col-md-10 text-center mx-auto">
+                     <div class="mb-6 text-center">
+                        <h2 class="text-capitalize">Trending blog news</h2>
                         <h5 class="mt-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-xl-4 col-lg-4 col-md-6 insights mx-0 mb-4 mb-md-0">
+                     <div class="card mx-0">
+                        <div class="card-image">
+                           <img class="card-img-top" src="assets/img/blog-post-1.jpg" alt="Card image">
+                        </div>
+                        <div class="card-body p-3">
+                           <h4 class="card-title mb-0"><a href="blog-single-post.html" class="text-grey">Simple & Easy way to hire a Service</a></h4>
+                           <div class="card-text">
+                              <div class="card-section-1 py-3">
+                                 <div class="row">
+                                    <div class="col-12">
+                                       <div class="pdt-description">
+                                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <hr class="mt-0">
+                              <div class="card-section-2">
+                                 <div class="row">
+                                    <div class="col-6">
+                                       <div class="insight-posted-date">
+                                          <span class="lnr lnr-clock text-theme"></span>
+                                          <span>&nbsp;14 Aug 2019</span>
+                                       </div>
+                                    </div>
+                                    <div class="col-6">
+                                       <div class="insight-share text-right">
+                                          <a href="javascript:;" class="collasped" data-toggle="collapse" data-target="#share-post-1" aria-expanded="true">
+                                          <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                          <span>&nbsp;Share post</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div id="share-post-1" class="collapse py-3 px-0">
+                                    <div class="">
+                                       <ul class="lh-0">
+                                          <li class="list-inline-item text-white"><a class="d-inline-block p-3 btn-outline-theme" href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                                          <li class="list-inline-item"><a class="d-inline-block btn-outline-theme p-3" href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                                          <li class="list-inline-item"><a class="d-inline-block btn-outline-theme p-3" href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-4 col-md-6 insights mx-0 mb-4 mb-md-0">
+                     <div class="card mx-0">
+                        <div class="card-image">
+                           <img class="card-img-top" src="assets/img/blog-post-2.jpg" alt="Card image">
+                        </div>
+                        <div class="card-body p-3">
+                           <h4 class="card-title mb-0">
+                              <a href="blog-single-post.html" class="text-grey">Learn more about the verified Seller</a>
+                           </h4>
+                           <div class="card-text">
+                              <div class="card-section-1 py-3">
+                                 <div class="row">
+                                    <div class="col-12">
+                                       <div class="pdt-description">
+                                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <hr class="mt-0">
+                              <div class="card-section-2">
+                                 <div class="row">
+                                    <div class="col-6">
+                                       <div class="insight-posted-date">
+                                          <span class="lnr lnr-clock text-theme"></span>
+                                          <span>&nbsp;05 Sep 2019</span>
+                                       </div>
+                                    </div>
+                                    <div class="col-6">
+                                       <div class="insight-share text-right">
+                                          <a href="javascript:;" class="collasped" data-toggle="collapse" data-target="#share-post-2" aria-expanded="true">
+                                          <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                          <span>&nbsp;Share post</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div id="share-post-2" class="collapse py-3 px-0">
+                                    <div class="">
+                                       <ul class="lh-0">
+                                          <li class="list-inline-item text-white"><a class="d-inline-block p-3 btn-outline-theme" href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                                          <li class="list-inline-item"><a class="d-inline-block btn-outline-theme p-3" href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                                          <li class="list-inline-item"><a class="d-inline-block btn-outline-theme p-3" href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-4 col-md-6 insights mx-0 mt-md-4 mt-lg-0">
+                     <div class="card mx-0">
+                        <div class="card-image">
+                           <img class="card-img-top" src="assets/img/blog-post-3.jpg" alt="Card image">
+                        </div>
+                        <div class="card-body p-3">
+                           <h4 class="card-title mb-0"><a href="blog-single-post.html" class="text-grey">Tips to Know your buyers expectations</a></h4>
+                           <div class="card-text">
+                              <div class="card-section-1 py-3">
+                                 <div class="row">
+                                    <div class="col-12">
+                                       <div class="pdt-description">
+                                          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <hr class="mt-0">
+                              <div class="card-section-2">
+                                 <div class="row">
+                                    <div class="col-6">
+                                       <div class="insight-posted-date">
+                                          <span class="lnr lnr-clock text-theme"></span>
+                                          <span>&nbsp;01 Jan 2019</span>
+                                       </div>
+                                    </div>
+                                    <div class="col-6">
+                                       <div class="insight-share text-right">
+                                          <a href="javascript:;" class="collasped" data-toggle="collapse" data-target="#share-post-3" aria-expanded="true">
+                                          <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                          <span>&nbsp;Share post</span>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div id="share-post-3" class="collapse py-3 px-0">
+                                    <div class="">
+                                       <ul class="lh-0">
+                                          <li class="list-inline-item text-white"><a class="d-inline-block p-3 btn-outline-theme" href="javascript:;"><i class="fa fa-facebook"></i></a></li>
+                                          <li class="list-inline-item"><a class="d-inline-block btn-outline-theme p-3" href="javascript:;"><i class="fa fa-twitter"></i></a></li>
+                                          <li class="list-inline-item"><a class="d-inline-block btn-outline-theme p-3" href="javascript:;"><i class="fa fa-google-plus"></i></a></li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
                      </div>
                   </div>
                </div>
                <div class="row">
                   <div class="col-12">
-                     <div class="testimonial-reel">
-                        <div>
-                           <div class="box shadow border-theme radius-1 p-4 text-center">
-                              <span class="ml-n5 mt-n3 display-1 text-theme position-absolute">“</span>
-                              <img class="img-fluid rounded-circle" src="{{ asset('assets/img/pdt-owner-img.jpg') }}" alt="Testimonial Author avatar">
-                              <div class="testi-contents">
-                                 <h4 class="text-theme my-4">Richard</h4>
-                                 <p class="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                              </div>
-                           </div>
-                        </div>
-                        <div>
-                           <div class="box shadow border-theme radius-1 p-4 text-center">
-                              <span class="ml-n5 mt-n3 display-1 text-theme position-absolute">“</span>
-                              <img class="img-fluid rounded-circle" src="{{ asset('assets/img/replier-img.jpg') }}" alt="Testimonial Author avatar">
-                              <div class="testi-contents">
-                                 <h4 class="text-theme my-4">Shiny</h4>
-                                 <p class="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                              </div>
-                           </div>
-                        </div>
-                        <div>
-                           <div class="box shadow border-theme radius-1 p-4 text-center">
-                              <span class="ml-n5 mt-n3 display-1 text-theme position-absolute">“</span>
-                              <img class="img-fluid rounded-circle" src="{{ asset('assets/img/pdt-owner-img.jpg') }}" alt="Testimonial Author avatar">
-                              <div class="testi-contents">
-                                 <h4 class="text-theme my-4">Richard</h4>
-                                 <p class="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                              </div>
-                           </div>
-                        </div>
-                        <div>
-                           <div class="box shadow border-theme radius-1 p-4 text-center">
-                              <span class="ml-n5 mt-n3 display-1 text-theme position-absolute">“</span>
-                              <img class="img-fluid rounded-circle" src="{{ asset('assets/img/replier-img.jpg') }}" alt="Testimonial Author avatar">
-                              <div class="testi-contents">
-                                 <h4 class="text-theme my-4">Shiny</h4>
-                                 <p class="text-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                              </div>
-                           </div>
-                        </div>
+                     <div class="text-center mt-6">
+                        <a href="blog.html" class="btn btn-md btn-theme radius-5 text-white py-3 px-4  text-capitalize shadow-theme-lg">view all blogs</a>
                      </div>
                   </div>
                </div>
             </div>
          </section>
-         <section class="newsletter-wrapper border-top py-6">
-            <div class="container">
-               <div class="row">
-                  <div class="col-lg-8 col-md-10 text-center mx-auto">
-                     <div class="mb-6 text-center">
-                        <h2>Subscribe for Latest Services</h2>
-                        <h5 class="mt-4">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</h5>
-                     </div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-12 col-lg-8 mx-auto">
-                     <div class="d-none d-md-flex input-group border-theme radius-5 shadow">
-                        <input type="email" class="form-control custom-input-height radius-5 border-0 no-bg-color" placeholder="Please enter your email to subscribe">
-                        <span class="input-group-btn ml-n5">
-                        <button class="btn btn-style px-5 py-3 text-white radius-5" type="submit">Subscribe</button>
-                        </span>
-                     </div>
-                     <div class="d-inline-block d-md-none mb-3 input-group border-theme radius-5 shadow">
-                        <input type="email" class="form-control custom-input-height radius-5 border-0 no-bg-color" placeholder="Please enter your email to subscribe">
-                     </div>
-                     <div class="text-center d-block d-md-none">
-                        <button class="btn btn-style px-5 py-3 mx-auto text-white radius-5" type="submit">Subscribe                     
-                        </button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </section>
-@endsection
 @endsection

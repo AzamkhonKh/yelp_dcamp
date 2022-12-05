@@ -15,11 +15,19 @@ class FrontController extends Controller
 
     public function index_organisation()
     {
-        $organisations = Organisation::with('categories')->paginate(10);
+        $organisations = Organisation::with('categories')->paginate(3);
         $categories = Category::all();
         return view('organisations.app_index', [
                 'organisations' => $organisations, 
                 'categories' => $categories
             ]);
+    }
+
+    public function page_organisation($id)
+    {
+        $organisation = Organisation::with('categories')->find($id);
+        return view('organisations.app_page', [
+            'organisations' => $organisation,
+        ]);
     }
 }

@@ -197,6 +197,6 @@
       <script src="{{ asset('assets/js/script.js') }}"></script>
       <script src="https://benalman.com/code/projects/jquery-throttle-debounce/jquery.ba-throttle-debounce.js"></script>
       
-      @yield('myscripts')
+      @yield('js')
    </body>
 </html>

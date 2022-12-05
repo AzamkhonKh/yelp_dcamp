@@ -22,7 +22,7 @@ Route::get(
     [OrganisationController::class, 'index']
 )->name('organisation');
 Route::post(
-    'organisation', 
+    '/organisation', 
     [OrganisationController::class, 'store']
 )->name('organisation.store');
 Route::delete(
@@ -46,6 +46,7 @@ Route::put(
 Route::apiResource('categories', CategoriesController::class);
 Route::get('/',[FrontController::class, 'landing'])->name('landing');
 Route::get('/app/organisations',[FrontController::class, 'index_organisation'])->name('app.organisations');
+Route::get('/app/organisations/{id}',[FrontController::class, 'page_organisation'])->name('app.organisations.page');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -1,5 +1,5 @@
 
-    <div class="pdt-list-wrapper mb-3 pt-3">
+    <div class="pdt-list-wrapper mb-3 pt-3 w-100">
         <div class="pdt-list-blk shadow border">
             <div class="row align-items-center">
                 <div class="col-md-3">
@@ -7,10 +7,10 @@
                     <img class="card-img-top custom-img-top" src="assets/img/service-img-5.jpg" alt="Card image">
                     </div>
                 </div>
-                <div class="col-md-">
+                <div class="col-md-6">
                     <div class="card-body p-md-0">
                     <h4 class="card-title mb-0">
-                        <a href="single-product.html" class="text-link">
+                        <a href="{{ route('app.organisations.page', ['id' => $organisation->id]) }}" class="text-link">
                             {{ $organisation->legal_name}}
                         </a>
                     </h4>
@@ -74,17 +74,9 @@
             </div>
             <div class="pdt-cat-tag clearfix p-2">
                 @foreach($organisation->categories as $key => $cat)
-                    <div class="mb-2 nowrap">
-                        <span class="bg-theme text-white px-3 py-1 radius-5">
-                            {{ $cat->name }}
-                        </span>
-                    </div>
+                    @include('components.tag', ['name' => $cat->name])
                     @if($key >= 3)
-                        <div class="mb-2 nowrap">
-                            <span class="bg-theme text-white px-3 py-1 radius-5">
-                                ...
-                            </span>
-                        </div>
+                        @include('components.tag', ['name' => '...'])
                         @break(true)
                     @endif
                 @endforeach

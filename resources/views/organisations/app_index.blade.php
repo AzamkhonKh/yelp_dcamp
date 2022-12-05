@@ -53,7 +53,7 @@
 <!-- Product Grid -->
 @endsection
 
-@section('myscripts')
+@section('js')
 <script lang="javascript">
    $(document).ready(function(){
       $('input[type="checkbox"]').change($.debounce(250, function(e) {
