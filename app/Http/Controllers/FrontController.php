@@ -27,7 +27,7 @@ class FrontController extends Controller
     {
         $organisation = Organisation::with('categories')->find($id);
         return view('organisations.app_page', [
-            'organisations' => $organisation,
+            'organisation' => $organisation,
         ]);
     }
 }
