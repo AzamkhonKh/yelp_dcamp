@@ -25,6 +25,11 @@ class Organisation extends Model
         return $this->belongstoMany(Category::class)->using(CategoryOrganisation::class);
     }
 
+    public function root_comments()
+    {
+        return $this->hasMany(Comment::class, 'organisation_id', 'id')
+            ->whereNull('parent_comment_id');
+    }
     public function comments()
     {
         return $this->hasMany(Comment::class);

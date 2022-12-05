@@ -3,6 +3,36 @@
 @section('js')
 
     <script>
+        function drop_reply_data(){
+            $('#comment_reply_id').val('');
+            $('.replay-div').hide();
+            $('#comment_reply_a').attr('href', '')
+            $('#commpent_reply_username').val('');
+            $('#reply_time').val('');
+            $('#reply_text').val('');
+        }
+        drop_reply_data();
+        $('.cancel_reply').click(function(){
+            drop_reply_data();
+        })
+        $('.reply').click(function(){
+            $('html, body').animate({
+                scrollTop: $("#leave_comment").offset().top - 150
+            }, 100);
+            let organisation_id = $(this).attr('comment_id');
+            $('#comment_reply_id').val(organisation_id);
+            $('.replay-div').show();
+            $('#comment_reply_a').attr('href', '#comment_'+organisation_id)
+            $('#commpent_reply_username').html($('#comment_username_'+organisation_id).html())
+            $('#reply_time').html($('#comment_time_'+organisation_id).html())
+            let text = $('#comment_text_'+organisation_id).text();
+            $('#reply_text').html(text.slice(0, 30) + '...')
+        });
+        $('.reply-cancel').click(function(){
+            let organisation_id = $(this).attr('comment_id');
+            $('#comment_reply_id').val(organisation_id);
+        });
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
@@ -14,12 +44,15 @@
             let username = $('#comment_username').val();
             let text = $('#comment_text').val();
             let parent_comment_id = $('#comment_reply_id').val();
+            let comment_rate = $('#comment_rate').val();
+            
             $.post(url, 
                 { 
                     organisation_id: organisation_id,
                     username: username,
                     text: text,
                     parent_comment_id: parent_comment_id,
+                    rate: comment_rate,
                 },
                 function(data, status) {
                     if(data.message === "success")
@@ -27,7 +60,10 @@
                     $('#comment_username').val('');
                     $('#comment_text').val('');
                     $('#comment_reply_id').val('')
-                })
+                    $('#comment_rate').val('')
+                    drop_reply_data();
+                    
+                });
         });
     </script>
 @endsection
@@ -188,27 +224,49 @@
                             </p>
                         </div>
                     </div>
+                    
                     <div class="fade show tab-pane reviews-tab" id="product-comments">
                         <div class="tab-content-wrapper p-4">
                             <div class="card-body p-0">
                             <div id="comments">
-                                @foreach($organisation->comments as $comment)
+                                @foreach($organisation->root_comments as $comment)
                                     @include('organisations.comment', ['comment' => $comment])
                                 @endforeach
                             </div>
-                            <div class="media align-items-top mb-0 pl-2">
-                                <div class="media-body">
-                                        <input type="hidden" id="comment_reply_id" value="">
-                                        <div class="form-group mb-3">
-                                            <input id="comment_username"  class="form-control bg-input p-3" placeholder="Give your name">
+                                <div class="col-12 border-2 shadow border mb-2 replay-div">
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <div class="d-flex justify-content-between">
+                                                <h5 class="d-inline-block">
+                                                    <a href="#" id="comment_reply_a" class="text-link">
+                                                        <strong id="commpent_reply_username">Aana</strong>
+                                                    </a>
+                                                    <span id="reply_text">
+                                                        added to Wish list
+                                                    </span>
+                                                    <p class="text-truncate" id="reply_time">Just Now...</p>
+                                                </h5>
+                                                <button comment_id="" class="cancel_reply border-theme bg-white rounded-circle position-relative text-theme m-4 p-3">
+                                                    <span class=" lnr lnr-cross loved noti_icon text-theme valign"></span>
+                                                </button>
+                                            </div>
                                         </div>
-                                        <div class="form-group mb-3">
-                                            <textarea id="comment_text" class="form-control bg-input p-3" rows="5" placeholder="Leave a comment...">
-                                            </textarea>
-                                        </div>
-                                        <button id="comment_organisation" class="btn btn-style px-4 py-2 text-white radius-5 text-capitalize">Comment</button>
+                                    </div>
                                 </div>
-                            </div>
+                                <div id="leave_comment" class="media align-items-top mb-0 pl-2">
+                                    <div class="media-body">
+                                            <input type="hidden" id="comment_reply_id" value="">
+                                            <div class="form-group mb-3">
+                                                <input id="comment_username"  class="form-control w-50 d-inline-block bg-input p-3" placeholder="Give your name">
+                                                <input type="number"  min="1" max="5" id="comment_rate"  class="form-control w-25 d-inline-block bg-input p-3" placeholder="Rate organisation">
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <textarea id="comment_text" class="form-control bg-input p-3" rows="5" placeholder="Leave a comment...">
+                                                </textarea>
+                                            </div>
+                                            <button id="comment_organisation" class="btn btn-style px-4 py-2 text-white radius-5 text-capitalize">Comment</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

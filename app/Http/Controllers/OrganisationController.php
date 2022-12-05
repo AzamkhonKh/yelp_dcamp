@@ -86,6 +86,7 @@ class OrganisationController extends Controller
         $comment = Comment::create([
             'text' => request('text'),
             'username' => request('username'),
+            'rate' => request('rate'),
             'user_id' => request('user_id'),
             'organisation_id' => request('organisation_id'),
             'parent_comment_id' => request('parent_comment_id')
