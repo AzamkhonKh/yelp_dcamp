@@ -18,6 +18,7 @@ class Organisation extends Model
         'inn',
         'location',
         'head_person_name',
+        'logo'
     ];
 
     public function categories()

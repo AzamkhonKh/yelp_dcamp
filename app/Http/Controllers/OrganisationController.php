@@ -27,6 +27,28 @@ class OrganisationController extends Controller
         return redirect()->back()->with('message', 'can\'t update');
     }
 
+    public function update(Request $request, $id)
+    {
+        $organisation = Organisation::find($id);
+        $update = [
+            'legal_name' => request('legal_name'),
+            'description' => request('description'),
+        ];
+        if($request->hasFile('logo'))
+        {
+            $update['logo'] = $request
+                ->file('logo')
+                ->storeAs(
+                    'organisations/logo', 
+                    str_replace(' ', '_', $organisation->legal_name).'_logo_'.time().'.png'
+                );
+        }
+        if($organisation->update($update)){
+            return redirect()->back()->with('message', 'succes');
+        }
+        return redirect()->back()->with('message', 'can\'t update');
+    }
+
     public function index()
     {
         $categories = Category::all();

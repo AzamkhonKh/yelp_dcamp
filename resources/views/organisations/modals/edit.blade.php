@@ -47,6 +47,18 @@
                         
                       </div>
                     </div>
+                    <div class="mb-4">
+                      <div class="input-group">
+                        <span class="input-group-text">
+                          Logo
+                        </span>
+                        <input 
+                            type="file" 
+                            class="form-control" 
+                            name="logo"
+                        >
+                      </div>
+                    </div>
                     
                 </div>
               </div>

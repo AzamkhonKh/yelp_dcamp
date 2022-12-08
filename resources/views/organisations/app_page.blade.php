@@ -28,10 +28,6 @@
             let text = $('#comment_text_'+organisation_id).text();
             $('#reply_text').html(text.slice(0, 30) + '...')
         });
-        $('.reply-cancel').click(function(){
-            let organisation_id = $(this).attr('comment_id');
-            $('#comment_reply_id').val(organisation_id);
-        });
 
         $.ajaxSetup({
             headers: {
