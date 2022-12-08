@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Organisation;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 
 class OrganisationController extends Controller
@@ -15,19 +14,8 @@ class OrganisationController extends Controller
         Organisation::create($request->all());
         return redirect()->back()->with('message', 'created');
     }
-    public function edit(Request $request, $id)
-    {
-        $organisation = Organisation::find($id);
-        if($organisation->update([
-            'legal_name' => request('legal_name'),
-            'description' => request('description')
-        ])){
-            return redirect()->back()->with('message', 'succes');
-        }
-        return redirect()->back()->with('message', 'can\'t update');
-    }
 
-    public function update(Request $request, $id)
+    public function edit(Request $request, $id)
     {
         $organisation = Organisation::find($id);
         $update = [
@@ -36,16 +24,27 @@ class OrganisationController extends Controller
         ];
         if($request->hasFile('logo'))
         {
+            $ext = $request
+                ->file('logo')
+                ->extension();
+            $file_name = str_replace(' ', '_', $organisation->legal_name).'_logo_'.time().'.'.$ext;
             $update['logo'] = $request
                 ->file('logo')
                 ->storeAs(
                     'organisations/logo', 
-                    str_replace(' ', '_', $organisation->legal_name).'_logo_'.time().'.png'
+                    $file_name
                 );
+            $old_file_name = $organisation->logo;
+            $old_logo_path = storage_path('app/').$old_file_name;
         }
         if($organisation->update($update)){
+            if(!is_null($old_file_name) && file_exists($old_logo_path))
+            {
+                unlink($old_logo_path);
+            }
             return redirect()->back()->with('message', 'succes');
         }
+        unlink(storage_path('app/').$$file_name);
         return redirect()->back()->with('message', 'can\'t update');
     }
 
