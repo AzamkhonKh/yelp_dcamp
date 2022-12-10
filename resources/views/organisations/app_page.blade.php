@@ -74,6 +74,11 @@
                 <div class="user-card shadow border bg-white p-4 text-center">
                     <div class="user-info">
                         <div class="user-details">
+                            @if(!is_null($organisation->logo))
+                            <img src="{{ asset('storage/'.$organisation->logo) }}" 
+                                alt="organisation logo" 
+                                class="rounded-circle">
+                            @endif
                             <h4>{{ $organisation->legal_name }}</h4>
                         </div>
                         <div class="rating-blk text-center d-inline-block">

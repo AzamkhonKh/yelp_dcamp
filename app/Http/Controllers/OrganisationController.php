@@ -22,6 +22,7 @@ class OrganisationController extends Controller
             'legal_name' => request('legal_name'),
             'description' => request('description'),
         ];
+        $old_file_name = null;
         if($request->hasFile('logo'))
         {
             $ext = $request
@@ -32,10 +33,11 @@ class OrganisationController extends Controller
                 ->file('logo')
                 ->storeAs(
                     'organisations/logo', 
-                    $file_name
+                    $file_name,
+                    'public'
                 );
             $old_file_name = $organisation->logo;
-            $old_logo_path = storage_path('app/').$old_file_name;
+            $old_logo_path = storage_path('app/public/').$old_file_name;
         }
         if($organisation->update($update)){
             if(!is_null($old_file_name) && file_exists($old_logo_path))
@@ -44,7 +46,7 @@ class OrganisationController extends Controller
             }
             return redirect()->back()->with('message', 'succes');
         }
-        unlink(storage_path('app/').$$file_name);
+        unlink(storage_path('app/public/').$file_name);
         return redirect()->back()->with('message', 'can\'t update');
     }
 
@@ -118,5 +120,20 @@ class OrganisationController extends Controller
             return ['message'=> 'success', 'html' => $rendered];
         }
         return ['message'=> 'failed'];
+    }
+
+    public function upload_image(Request $request)
+    {
+        if ($request->hasFile('upload')) {
+            $originName = $request->file('upload')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('upload')->getClientOriginalExtension();
+            $fileName = $fileName . '_' . time() . '.' . $extension;
+    
+            $request->file('upload')->storeAs('organisations/description', $fileName);
+    
+            $url = asset('storage/organisations/description/'.$fileName);
+            return response()->json(['fileName' => $fileName, 'uploaded'=> 1, 'url' => $url]);
+        }
     }
 }
