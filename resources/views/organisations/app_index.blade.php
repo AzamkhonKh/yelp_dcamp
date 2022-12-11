@@ -36,12 +36,12 @@
    <div class="container">
       <div class="row">
          <div class="col-lg-4 col-md-12">
-            @include('organisations.filter')
+            @include('organisations.components.filter')
          </div>
          <div class="col-lg-8">
             <div class="row">
                @foreach($organisations as $organisation)
-                  @include('organisations.row_card', ['organisation' => $organisation])
+                  @include('organisations.components.row_card', ['organisation' => $organisation])
                @endforeach
                {{ $organisations->links('vendor.pagination.bootstrap-4') }}
             </div>

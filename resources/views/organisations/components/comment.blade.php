@@ -17,7 +17,7 @@
             <span class="rating__count" >( {{ $comment->rate }} Rating )</span>
         </div>
         <div id="comment_text_{{$comment->id}}" class="cmt-text d-block text-grey">
-            {{ $comment->text }}
+            {!! $comment->text !!}
         </div>
     </div>
     <div class="amt-rect-sale d-inline-block float-right">

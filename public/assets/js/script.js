@@ -145,17 +145,6 @@
 	}
 
 
-	// Text Editor
-	
-	if ($('.text-editor').length > 0) {
-		$('.text-editor').summernote({
-			height: 140, // set editor height
-			minHeight: null, // set minimum height of editor
-			maxHeight: null, // set maximum height of editor
-			focus: false // set focus to editable area after initializing summernote
-		});
-	}
-
     // Countdown
     if ($('#countdown').length > 0) { 
         $('#countdown').countdown({

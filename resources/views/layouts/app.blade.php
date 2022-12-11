@@ -20,6 +20,7 @@
       <link rel="stylesheet" href="{{ asset('assets/plugins/color-switcher/css/jquery.colorpanel.css') }}">
       <!-- Custom CSS -->
       <link rel="stylesheet" href="{{ asset('assets/css/blue.css') }}" id="cpswitch">
+      @yield('header')
    </head>
    <body>
       <!-- Home Wrapper -->
@@ -193,10 +194,8 @@
       <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
       <!-- Slick Js-->
       <script src="{{ asset('assets/plugins/slick/js/slick.min.js') }}"></script>
+      @yield('js')
       <!-- Custom JS -->
       <script src="{{ asset('assets/js/script.js') }}"></script>
-      <script src="https://benalman.com/code/projects/jquery-throttle-debounce/jquery.ba-throttle-debounce.js"></script>
-      
-      @yield('js')
    </body>
 </html>
