@@ -94,8 +94,8 @@
 @section('js')
     <script>
         $('.add_category').click(function(){
-            let url = '{{ route('organisation.api.add_category') }}';
-            let url_cat = '{{ route('organisation') }}';
+            let url = "{{ route('organisation.api.add_category') }}";
+            let url_cat = "{{ route('organisation') }}";
             let organisation_id = $(this).attr('organisation_id');
             let category_name = $('#add_category'+organisation_id).val()
             $.post(url, 

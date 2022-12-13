@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Organisation;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,7 @@ class FrontController extends Controller
 
     public function page_organisation($id)
     {
-        $organisation = Organisation::with(['categories', 'root_comments'])->find($id);
+        $organisation = Organisation::with(['categories', 'root_comments', 'suggestion_comments'])->find($id);
         return view('organisations.app_page', [
             'organisation' => $organisation,
         ]);

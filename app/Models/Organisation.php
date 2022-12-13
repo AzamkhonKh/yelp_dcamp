@@ -31,6 +31,16 @@ class Organisation extends Model
         return $this->hasMany(Comment::class, 'organisation_id', 'id')
             ->whereNull('parent_comment_id');
     }
+    
+    public function suggestion_comments()
+    {
+        return $this->hasMany(Comment::class, 'organisation_id', 'id')
+            ->orderBy('rate', 'desc')
+            ->with('media')
+            ->has('media')
+            ->limit(10);
+    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
