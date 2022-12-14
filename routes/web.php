@@ -1,11 +1,9 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OrganisationController;
-use App\Http\Controllers\TeachingController;
-use App\Models\Organisation;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +22,7 @@ Route::get(
     [OrganisationController::class, 'index']
 )->name('organisation');
 Route::post(
-    'organisation', 
+    '/organisation', 
     [OrganisationController::class, 'store']
 )->name('organisation.store');
 Route::delete(
@@ -46,6 +44,10 @@ Route::put(
 )->name('organisation.edit');
 
 Route::apiResource('categories', CategoriesController::class);
+Route::get('/',[FrontController::class, 'landing'])->name('landing');
+Route::get('/app/organisations',[FrontController::class, 'index_organisation'])->name('app.organisations');
+Route::get('/app/organisations/{id}',[FrontController::class, 'page_organisation'])->name('app.organisations.page');
+Route::post('/app/organisations/{id}/comment',[OrganisationController::class, 'add_comment'])->name('app.organisations.comment');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

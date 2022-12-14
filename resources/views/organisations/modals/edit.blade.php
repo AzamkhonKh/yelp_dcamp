@@ -1,7 +1,7 @@
 <!-- Pop In Modal -->
 <div class="modal fade" id="modal-popin{{ $org->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-popin" aria-hidden="true">
 
-<form action="{{ route('organisation.edit', $org->id) }}" method="POST">
+<form action="{{ route('organisation.edit', $org->id) }}" enctype='multipart/form-data' method="POST">
 @csrf
 @method('PUT')
     <div class="modal-dialog modal-dialog-popin" role="document">
@@ -45,6 +45,18 @@
                             value="{{$org->description}}"
                         >
                         
+                      </div>
+                    </div>
+                    <div class="mb-4">
+                      <div class="input-group">
+                        <span class="input-group-text">
+                          Logo
+                        </span>
+                        <input 
+                            type="file" 
+                            class="form-control" 
+                            name="logo"
+                        >
                       </div>
                     </div>
                     
