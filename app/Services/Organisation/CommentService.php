@@ -59,6 +59,7 @@ class CommentService
                 ->addMediaFromUrl($file)
                 ->toMediaCollection('comments');
         }else{
+            // png
             list($type, $base_64) = explode(';', $file);
             list(, $mimeType) = explode(':', $type);
             list(, $data)      = explode(',', $base_64);

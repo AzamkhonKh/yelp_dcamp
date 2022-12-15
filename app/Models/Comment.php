@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 
 class Comment extends Model implements HasMedia
@@ -30,6 +32,17 @@ class Comment extends Model implements HasMedia
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this
+            ->addMediaConversion('comments')
+            ->fit(Manipulations::FIT_CROP, 300, 300);
+
+        $this->addMediaConversion('bigthumb')
+            ->width(300)
+            ->height(100);
     }
     
 }

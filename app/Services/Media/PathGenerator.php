@@ -8,7 +8,13 @@ class PathGenerator extends DefaultPathGenerator
 {
     public function getPath(Media $media): string
     {
-        $path = parent::getPath($media);
-        return $media->collection_name.'/'.$media->model_id.'/'.$path;
+        return parent::getPath($media);
+        // return $media->collection_name.'/'.$media->model_id.'/'.$path;
+    }
+
+    protected function getBasePath(Media $media): string
+    {
+        $prefix = $media->collection_name.'/'.$media->model_id;
+        return $prefix . '/' . $media->getKey();
     }
 }

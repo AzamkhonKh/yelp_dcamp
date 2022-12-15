@@ -30,6 +30,8 @@
             $('#commpent_reply_username').val('');
             $('#reply_time').val('');
             $('#reply_text').val('');
+            $('.text-editor').summernote('code', '');
+
         }
         drop_reply_data();
         $('.cancel_reply').click(function() {
@@ -204,7 +206,7 @@
                                             @foreach($organisation->suggestion_comments as $comment)
                                                 <div class="slide-thumb p-3 border mr-1">
                                                     <div class="card-image image-overlay">
-                                                        <img class="card-img-top" src="{{ $comment->media->first()->getFullUrl() }}" alt="Card image">
+                                                        <img class="card-img-top" src="{{ $comment->media->first()->getFullUrl('comments') }}" alt="Card image">
                                                         <a href="#comment_{{ $comment->id }}" class="btn btn-outline-white btn-dark radius-5 py-3 px-4 text-capitalize open_comment"> More Info</a>
                                                     </div>
                                                 </div>
