@@ -139,4 +139,14 @@ class OrganisationController extends Controller
             return response()->json(['fileName' => $fileName, 'uploaded'=> 1, 'url' => $url]);
         }
     }
+
+    public function api_organisations(Request $request)
+    {
+        $organisation = Organisation::ApiFilter()->get();
+
+        return response()->json([
+            'message' => 'success',
+            'data' => $organisation,
+        ]);
+    }
 }

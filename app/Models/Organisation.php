@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,6 +21,14 @@ class Organisation extends Model
         'head_person_name',
         'logo'
     ];
+
+    public function scopeApiFilter(Builder $q)
+    {
+        $q->when(request('organisation_id'), function ($q) {
+            $q->where('id', request('organisation_id'));
+        })
+        ->whereNotNull('inn');
+    }
 
     public function categories()
     {

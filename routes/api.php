@@ -23,3 +23,5 @@ Route::post(
     'organisation/attach_category', 
     [OrganisationController::class, 'attach_category_api']
 )->name('organisation.api.add_category');
+
+Route::get('open/organisation', [OrganisationController::class, 'api_organisations']);
